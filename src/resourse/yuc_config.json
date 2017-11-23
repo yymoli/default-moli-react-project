@@ -1,7 +1,7 @@
 [{
 	"name": "cardView",
 	"ios-class": "Component_CardView",
-	"android-class": "CardView"
+	"android-class": "com.yyuap.summer.yuc.module.Component_Summer"
 }, {
 	"name": "summer",
 	"ios-class": "Component_Summer",
