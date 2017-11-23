@@ -154,7 +154,7 @@ class WorkSpace extends Component {
         }
       
         let curT = href.split('static/themes/')[1].split('/')[0];
-        let Ts = ["default","red","orange","blue","green","gray","blue2"];
+        let Ts = ["blue","gray","green","orange","red"];
         
         let newT = Ts.splice(Ts.indexOf(curT)-1,1);
         let news = `../static/themes/${newT}/css/iuapmobile.um.css`;
