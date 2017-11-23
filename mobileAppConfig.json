@@ -1,0 +1,46 @@
+{
+    "buildSetting":{
+        "appName":"test",
+        "projectName":"test",
+        "packageName":"com.yonyou.moli.test",
+        "versionName":"1.0.0",
+        "versionCode":"1",
+        "versionBuild":"1.0.0",
+        "debuggerEnable":"false",
+        "startPage":"Workbench/Index.html",
+        "reinforcement":"false",
+        "sandbox":"false",
+        "statusBarTheme":"summer.Animations.NoTitleBar.FullScreen",
+        "cordovaPlugins":[
+            {
+                "name":"cordova-plugin-compat",
+                "parameters":[
+                    
+                ]
+            }
+        ]
+    },
+    "androidSetting":{
+        "showLaunch":true,
+        "webContentsDebuggingEnabled":true,
+        "showCrashLog":false,
+        "openKeyBackListener":false
+    },
+    "mDoctor":{
+        "openPosition":true,
+        "openMDoctor":true,
+        "channelKey":"",
+        "appKey":"",
+        "wifiAutoSync":true
+    },
+    "launchOptions":{
+        "autoHideLaunch":true,
+        "type":""
+    },
+    "statusBarStyle":"dark",
+    "navigationBarHidden":true,
+    "statusBarAppearance":true,
+    "fullScreen":true,
+    "orientation":"portrait",
+    "messageIntercept":""
+}
