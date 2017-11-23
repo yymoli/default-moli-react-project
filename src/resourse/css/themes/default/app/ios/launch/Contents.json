@@ -30,6 +30,15 @@
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
+      "filename" : "iphone-portrait-812h@3x.png",
+      "minimum-system-version" : "11.0",
+      "subtype" : "2436h",
+      "scale" : "3x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "iphone",
+      "extent" : "full-screen",
       "filename" : "iphone-portrait-default@2x.png",
       "minimum-system-version" : "7.0",
       "scale" : "2x"

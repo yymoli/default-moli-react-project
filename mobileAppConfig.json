@@ -40,7 +40,7 @@
     "statusBarStyle":"dark",
     "navigationBarHidden":true,
     "statusBarAppearance":true,
-    "fullScreen":true,
+    "fullScreen":false,
     "orientation":"portrait",
     "messageIntercept":""
 }
