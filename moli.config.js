@@ -221,6 +221,9 @@ var prodConfig = {
         }, {
             from: "src/resourse/css",
             to: "css"
+        }, {
+            from: "src/resourse/yuc_config.json",
+            to: ""
         }])
     ],
     resolve: {

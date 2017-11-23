@@ -1,0 +1,17 @@
+[{
+	"name": "cardView",
+	"ios-class": "Component_CardView",
+	"android-class": "CardView"
+}, {
+	"name": "summer",
+	"ios-class": "Component_Summer",
+	"android-class": "com.yyuap.summer.yuc.module.Component_Summer",
+	"params": {}
+}, {
+	"name": "Corp",
+	"ios-class": "Component_Summer",
+	"android-class": "com.yyuap.summer.yuc.module.Component_Summer",
+	"params": {
+		"startPage": "public/Contacts/Corp.html"
+	}
+}]
