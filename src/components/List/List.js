@@ -87,6 +87,18 @@ class ContentList extends Component {
                     </div>
                 );
             }else{
+                if(!_this.state.metaData.com){
+                    _this.state.metaData.com = {};
+                }
+                if(!_this.state.metaData.com.userName){
+                    _this.state.metaData.com.userName = {};
+                }
+                if(!_this.state.metaData.com.companyName){
+                    _this.state.metaData.com.companyName = {};
+                }
+                if(!_this.state.metaData.com.mobile){
+                    _this.state.metaData.com.mobile = {};
+                }
                 tabContentArray.push(
                     <div key={index} onClick={_this.openWin(item)} className="um-box">
                         <div className="td1 um-bf1 um-box-center">

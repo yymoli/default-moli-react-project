@@ -55,11 +55,10 @@
     "yymoli": "^1.0.4"
   },
   "scripts": {
-    "dev-pc": "cross-env NODE_MOLIENV=pc moli dev",
-    "dev-mob": "cross-env NODE_MOLIENV=mobile moli dev",
-    "dev2": "uba server",
-    "dev": "yymoli dev",
-    "build": "uba build",
+     "dev-pc": "moli dev",
+    "dev-mob": "moli dev -m",
+    "dev": "moli dev",
+    "build": "moli build",
     "debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack/webpack.config.js"
   },
   "repository": {

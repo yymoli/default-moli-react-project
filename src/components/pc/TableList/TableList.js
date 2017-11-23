@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-//import Card  from 'widget/Card/Card';
 import {Router,Route,IndexRoute,hashHistory,Link} from 'react-router';
 import './TableList.css';
 const propTypes = {
@@ -13,31 +12,7 @@ class ContentList extends Component {
         super(props, context);
         this.state = {
             data:{},
-            metaData:{
-
-                "name":{
-                    "name": "名字",
-                    "display": "block",
-                    "style":{
-                        "color": "red"
-                    }
-                },
-                "departmentName":{
-                    "name": "部门名字",
-                    "display": "block",
-                    "style":{
-                        "color": "#bcbcbc",
-                        "font-size": "18px"
-                    }
-                },
-                "phone":{
-                    "name": "电话",
-                    "display": "none",
-                    "style":{
-                        "color": "green"
-                    }
-                },
-            }
+            metaData:{}
         }
     }
     componentDidMount() {
@@ -52,56 +27,42 @@ class ContentList extends Component {
             metaData: metaData
         })
     }
-    renderHeader = () => {
-        let _this = this;
-        let data = this.props.data;
-        let metaData = _this.props.metaData
-        let headerArr=[];
-        for (let i=0;i<data.length;i++){
-            for(var k in data[i]){
-                if(metaData[k]){
-                    if(i==0){
-                        metaData[k].display?metaData[k].style.display=metaData[k].display:metaData[k].style.display="block";
-                        headerArr.push(<div className="th1 um-bf1" style={metaData[k].style}>{metaData[k].name}</div>);
-                    }
-                }
-            }
-        }
-        return headerArr;
-    }
     renderTabContent = () => {
         let _this = this;
-        let data = this.props.data;
+        let data = _this.props.data;
         let metaData = _this.props.metaData
         let tabContentArray = [];
         let ContentArray=[];
+        let headerArr=[];
+        let tabHeaderArr=[];
+        let totalContent=[];
          for (let i=0;i<data.length;i++){
              for(var k in data[i]){
                  if(metaData[k]){
+                     if(i==0){
+                         metaData[k].display?metaData[k].style.display=metaData[k].display:metaData[k].style.display="block";
+                         headerArr.push(<div className="th1 um-bf1" style={metaData[k].style}>{metaData[k].name}</div>);
+                     }
                      let displayContent={"display":"block"};
                      metaData[k].display=="none"?displayContent.display=metaData[k].display:displayContent.display="block";
                      ContentArray.push( <div  className="tc td1 um-bf1 um-box-center" style={displayContent}>{data[i][k]}</div>);
                  }else{
-                          ContentArray.push( <div  className="tc td1 um-bf1 um-box-center" >{data[i][k]}</div>);
-                      }
+                     i==0?headerArr.push(<div className="th1 um-bf1" >column</div>):'';
+                     ContentArray.push( <div  className="tc td1 um-bf1 um-box-center" >{data[i][k]}</div>);
+                 }
              }
-             tabContentArray.push(<div className="um-box um-line">{ContentArray}</div>);
+             tabContentArray.push(<div className="content"><div className="um-box um-line">{ContentArray}</div></div>);
              ContentArray=[];
          }
-        return tabContentArray;
+        tabHeaderArr.push(<div className="header"><div className="um-box">{headerArr}</div></div>);
+        totalContent.push(tabHeaderArr);
+        totalContent.push(tabContentArray);
+        return totalContent;
     }
     render() {
-       let header= this.renderHeader()
         return (
             <div className="list um-content">
-                <div className="header">
-                <div className="um-box">
-                    	{header}
-                 </div>
-                </div>
-                <div className="content">
-                    {this.renderTabContent()}
-                </div>
+                {this.renderTabContent()}
             </div>
         );
     }
