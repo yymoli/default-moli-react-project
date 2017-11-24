@@ -86,12 +86,12 @@ class ComponentManager {
        
         var iframe = document.createElement("iframe");
         iframe.setAttribute("id", params.componentId + "_iframe");
-        var startPage = params.componentParams.startPage;
-        if(!startPage.indexOf(window.location.origin)){
-        	startPage = window.location.origin + "/" + startPage;
+        var url = params.componentParams.url;
+        if(!url.indexOf(window.location.origin)){
+            url = window.location.origin + "/" + url;
         }
         
-        iframe.setAttribute("src", startPage);
+        iframe.setAttribute("src", url);
         iframe.setAttribute("style", "z-index:99;position:absolute;top:0px;left:0px;width:100%;height:100%;border:0px;");
 
         div.appendChild(iframe);
