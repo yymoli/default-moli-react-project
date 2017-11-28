@@ -2,7 +2,7 @@
     "data": {
         "prefixCls": "titelabal",
         "className": "headertitle",
-        "children": "我的工作台",
+        "children": "examples",
         "mode": "light",
         "leftIconName": "account",
         "rightIconName": "search",
