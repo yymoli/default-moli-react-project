@@ -24,6 +24,7 @@ export const ajax = (paramObj, successCallback, errorCallback, showLoading = fal
     if ($summer.os != 'pc') {
         paramObj.url = getPath(paramObj);
     }
+    paramObj.deviceType = $summer.os.toUpperCase();
 
     //ajax请求时 显示loading
     /**
