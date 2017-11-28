@@ -59,6 +59,8 @@ export const ajax = (paramObj, successCallback, errorCallback, showLoading = fal
 function summerHTTP(paramObj, successCallback, errorCallback) {
     //ios设置的超时
     window.cordovaHTTP.settings = {"timeout": 10000}
+    let header;
+    if ($summer.os == 'pc') header = {deviceId: "1", token: "2", code: "2"};
     if (paramObj.contentType) header["Content-Type"] = paramObj.contentType;
     const {type, url, param} = paramObj;
     summer.ajax({
@@ -111,6 +113,8 @@ function summerHTTP(paramObj, successCallback, errorCallback) {
 export function axiosHTTP(paramObj, successCallback, errorCallback) {
     const {type, url, param} = paramObj;
 
+    let header;
+    if ($summer.os == 'pc') header = {deviceId: "1", token: "2", code: "2"};
     if (paramObj.contentType) header["Content-Type"] = paramObj.contentType;
     let reqParam = {
         method: type,
