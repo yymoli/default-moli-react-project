@@ -2,7 +2,7 @@ import React,{ Component} from 'react';
 import ReactDOM from 'react-dom';
 import {ajax} from 'api/ajax.js';
 import { Row, Col } from '../layout/index';
-import './Card.css'
+import './card.css'
 
 const defaultProps = {
 

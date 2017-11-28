@@ -2,7 +2,7 @@ import React,{ Component} from 'react';
 import ReactDOM from 'react-dom';
 import {ajax} from 'api/ajax.js';
 import { row,col } from '../layout/index';
-import './Card.css'
+import './card.css'
 class Card extends Component {
     constructor(props, context) {
         super(props, context);
