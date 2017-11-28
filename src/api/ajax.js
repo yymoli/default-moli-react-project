@@ -110,12 +110,6 @@ function summerHTTP(paramObj, successCallback, errorCallback) {
 export function axiosHTTP(paramObj, successCallback, errorCallback) {
     const {type, url, param} = paramObj;
 
-    if ($summer.os == 'pc')
-        header = {
-            deviceId: "1",
-            token: "2",
-            code: "2"
-        };
     if (paramObj.contentType) header["Content-Type"] = paramObj.contentType;
     let reqParam = {
         method: type,

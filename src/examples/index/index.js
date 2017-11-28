@@ -1,14 +1,16 @@
 import React,{ Component} from 'react';
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom';
-import {ajax} from 'api/ajax.js';
+import {ajax} from 'api/ajax';
 
-import appComponentManage from 'api/appComponentManager.js'
-import WgtPanel from '../components/WgtPanel/WgtPanel';
-import NavBar from '../../components/NavBar/index.js'
-import Icon from '../../components/Icon/index'
+import appComponentManage from 'api/appComponentManager'
+import NavBar from '../../components/navbar/index'
+import Icon from '../../components/icon/index'
 
 import "./index.css"
+
+var locale = require("../i18n/language.json");
+
 class WorkSpace extends Component {
     constructor(props, context) {
         super(props, context);
@@ -37,7 +39,6 @@ class WorkSpace extends Component {
 
     componentDidMount() {
         this.init();
-
     }
 
     initThemes(){
@@ -60,8 +61,6 @@ class WorkSpace extends Component {
             newlink.type = 'text/css';
             head.appendChild(newlink);
         }
-
-        
     }
 
     init = () => {
@@ -173,12 +172,10 @@ class WorkSpace extends Component {
         return (
             <div className="um-win">
                 <div className="um-header um-theme-color2">
-                    <NavBar
-                             rightContent={<div onClick={this.switchThemes} >更改主题</div>}
-                    >{title} </NavBar>
+                    <NavBar rightContent={<div onClick={this.switchThemes} >{locale.modifyTheme}</div>}>{title} </NavBar>
                 </div>
                 <div className="um-content">
-                    <WgtPanel data={this.state.allData} metaData={this.state.metaData} changeFn = {this.changeFn}/>
+                    {locale.welcomeTongue}
                 </div>
                 <div className="um-footer">
 
