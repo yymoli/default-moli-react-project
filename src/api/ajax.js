@@ -2,20 +2,6 @@ import {browserRedirect,isJson} from './util';
 import axios from 'axios';
 
 /**
- * 统一处理 http 请求返回的数据非 JSON 的情况
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
-function httpErrorHandler(res) {
-    if (!isJson(res)) {
-        summer.toast({
-            msg: "老板，服务器小哥跑去乘凉了，请稍等哦~"
-        });
-
-    }
-}
-
-/**
  * [ajax description] 统一封装 http 请求方案
  * @param  {[type]} paramObj        [description]
  * @param  {[type]} successCallback [description]
@@ -23,7 +9,6 @@ function httpErrorHandler(res) {
  * @param  {[type]} haveFunFlag     [description]
  * @return {[type]}                 [description]
  */
-
 export const ajax = (paramObj, successCallback, errorCallback, showLoading = false) => {
     //判断网络连接是否可用
     if ($summer.os != 'pc' && !summer.getNetworkInfo().Type) {
@@ -81,14 +66,11 @@ function summerHTTP(paramObj, successCallback, errorCallback) {
         param: param,
         header: header // 考虑接口安全，每个请求都需要将这个公共header带过去
     }, function (response) {
-        httpErrorHandler(response);
-
         var data = JSON.parse(response.data);
         var tokenerror = summer.getStorage("G-TOKEN-ERROR");
 
         if (tokenerror) return false
         if (data.code == "sys.token.error") {
-            setGtoken();
             return false;
         }
         if (data.flag == 0) {
@@ -100,6 +82,8 @@ function summerHTTP(paramObj, successCallback, errorCallback) {
         summer.hideProgress();
         successCallback(data);
     }, function (response) {
+        httpErrorHandler(response);
+
         if (response.status && response.status != 200) {
             summer.toast({
                 msg: '不好意思，服务器开小差了!'
@@ -155,7 +139,6 @@ export function axiosHTTP(paramObj, successCallback, errorCallback) {
 
             if (tokenerror) return false;
             if (res.data.code == "sys.token.error") {
-                setGtoken();
                 return false;
             } else {
                 window.localStorage.removeItem('G-TOKEN-ERROR')
@@ -171,32 +154,21 @@ export function axiosHTTP(paramObj, successCallback, errorCallback) {
         successCallback(res.data)
     }).catch(function (e) {
         /*首页报错，直接跳转登录页关闭启动页*/
-        if (url.indexOf('/auth/validate') > 0) {
-            setGtoken()
-        } else {
-            console.log(e);
-            console.log(e.response);
-            if (e.response && e.response.status != 200) {
-                summer.toast({
-                    msg: '不好意思，服务器开小差了!'
-                });
-                summer.refreshFooterLoadDone();
-                summer.refreshHeaderLoadDone();
-                summer.hideProgress();
-                return;
-            }
+        console.log(e);
+        console.log(e.response);
+        if (e.response && e.response.status != 200) {
+            summer.toast({
+                msg: '不好意思，服务器开小差了!'
+            });
+            summer.refreshFooterLoadDone();
+            summer.refreshHeaderLoadDone();
+            summer.hideProgress();
+            return;
         }
 
         window.ajaxLoadState = "success";
         summer.hideProgress();
         errorCallback();
-        /*if (e.response.status != 200) {
-         summer.toast({
-         msg: '不好意思，服务器开小差了!'
-         });
-         summer.hideProgress();
-         return;
-         }*/
     });
 }
 
@@ -211,45 +183,8 @@ function getPath(params) {
         //fullUrl微信登录时调用微信的地址
         return url;
     } else {
-        /*if (env == "dev") {
-         return devRootURL + url;
-         } else if (env == "prod") {
-         return prodRootURL + url;
-         }*/
-        return RootURL + url;
+        return 'http://10.3.13.7:8091' + url;
     }
-}
-
-/**
- * [setGtoken description]
- */
-function setGtoken() {
-    // 设置token标志
-    summer.setStorage("G-TOKEN-ERROR", true);
-    // 清除userinfo，直接退出之后，再进入可以直接跳入到登录
-    summer.rmStorage("userinfo");
-    // 提示框
-    summer.toast({
-        msg: "您长时间未登录，请重新登录"
-    });
-    //全局去除遮罩层
-    summer.hideProgress();
-    //  退出有信
-    var params = {
-        "method": "YYIM.logout",
-        "params": {}
-    }
-    cordova.exec(null, null, "XService", "callSync", [params]);
-
-    // 跳转到登录页面
-    setTimeout(function () {
-        summer.openWin({
-            id: "login",
-            url: "Account/Login.html",
-            "addKeyBoardListener": "_login.addKey()",
-            isKeep: false
-        });
-    }, 500);
 }
 
 /**
