@@ -21,12 +21,12 @@ const svrConfig = {
     port: 3003
 };
 const proxyConfig = [{
-    enable: false,//如果为true那么就是启用代理，mock会失效，为false的时候代理失效，mock生效
+    enable: true,//如果为true那么就是启用代理，mock会失效，为false的时候代理失效，mock生效
     router: "/",
 
     //url: "http://10.11.65.50:8080",
     //url: "https://wstest.yonyoucloud.com",
-    url: "http://172.20.7.97:8900",
+    url: "http://10.3.13.7:8091",
     //url:"http://172.27.35.1:8900",
 
     options: {
