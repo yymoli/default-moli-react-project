@@ -4,7 +4,9 @@
   "description": "moli project",
   "main": "gulpfile.js",
   "dependencies": {
+    "antd-mobile": "^2.0.3",
     "axios": "^0.16.2",
+    "bee-table": "^1.0.5",
     "classnames": "^2.2.5",
     "process-nextick-args": "^1.0.7",
     "promise-polyfill": "^6.0.2",
