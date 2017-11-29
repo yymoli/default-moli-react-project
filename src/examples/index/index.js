@@ -162,6 +162,8 @@ class WorkSpace extends Component {
          val = "CN";
       } else if (value == "English") {
          val = "US"
+      } else if (value == "Japanese") {
+         val = "JP"
       }
       this.getData(val);
       this.setState({
@@ -196,6 +198,7 @@ class WorkSpace extends Component {
                           >
                              <option value ="中文">中文</option>
                              <option value ="English">English</option>
+                             <option value ="Japanese">Japanese</option>
                           </select>
                        }
                     >{title} </NavBar>
