@@ -6,6 +6,7 @@ import {ajax} from 'api/ajax';
 import appComponentManage from 'api/appComponentManager'
 import NavBar from '../../components/navbar/index'
 import Icon from '../../components/icon/index'
+// import List from 'widget/molibox-list/molibox-list'
 
 import "./index.css"
 
@@ -15,8 +16,8 @@ class WorkSpace extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            allData: {},
             metaData: {},
+            data:[],
             changeData:{},
             data_params:{},
             headerData:{}
@@ -65,45 +66,37 @@ class WorkSpace extends Component {
 
     init = () => {
         if ($summer.os == 'pc') {
-            this.getData();
+            // this.getData();
             this.getHeaderData();
         } else {
             summer.on("ready", this.getData);
         }
     }
 
-    getData = () => {
-        let _this = this;
-        // 这里应该是上一个页面传过来的
-        let id = this.state.data_params && this.state.data_params.id ? this.state.data_params.id : 4;
-        ajax({
-            "type": "get",
-            //"url": "/user/find",
-            "url": "/userlink/getContactsDetails",
-            "param":{
-                "meta": JSON.stringify({
-                    "clientType": $summer.os,
-                    "componentId":"card001"
-                }),
-                "id":id
-            },
-        },function(data){
-            if(data.flag == 0){
-                let allData = data.data;
-                _this.setState({
-                    allData: allData
-                });
+    /*getData = () => {
+      let _this = this;
+      // 这里应该是上一个页面传过来的
+      ajax({
+          "type": "get",
+         //  "url": "/userlink/getMyTableList",
+          "url": "/rest/user",
+          "param":{
+               "componentCode":"demo",
+               "viewCode":"demo",
+               "lang":"CN"
+          },
+      },function(data){
+          if(data.metas){
+               let metasFianal=data.metas.demo.properties;
+               _this.setState({metaData : metasFianal});
+          }
+          let listData = data.views.User.records;
 
-                let metaData = data.metaData;
-                _this.setState({
-                    metaData: metaData
-                });
-            }
-
-        },function(res){
-            console.log(res);
-        });
-    }
+          _this.setState({ data : listData});
+      },function(res){
+          console.log(res);
+      });
+    }*/
     getHeaderData = () => {
         let _this = this;
         // 这里应该是上一个页面传过来的
@@ -151,10 +144,10 @@ class WorkSpace extends Component {
 
 
         }
-      
+
         let curT = href.split('static/themes/')[1].split('/')[0];
         let Ts = ["blue","gray","green","orange","red"];
-        
+
         let newT = Ts.splice(Ts.indexOf(curT)-1,1);
         let news = `../static/themes/${newT}/css/iuapmobile.um.css`;
         link.setAttribute("href", news);
@@ -169,6 +162,12 @@ class WorkSpace extends Component {
             iconname = <Icon type={headerData.data.leftIconName} />;
             title=headerData.data.children;
         }
+        /*let content=null;
+        if(this.state.data.length==0){
+            content= <img src="../static/img/preload.png" alt="" className="loading-img"/>
+        }else {
+            content=<List data={this.state.data} metaData={this.state.metaData} />
+        }*/
         return (
             <div className="um-win">
                 <div className="um-header um-theme-color2">
@@ -176,6 +175,7 @@ class WorkSpace extends Component {
                 </div>
                 <div className="um-content">
                     {locale.welcomeTongue}
+
                 </div>
                 <div className="um-footer">
 
