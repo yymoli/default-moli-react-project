@@ -6,7 +6,7 @@ import {ajax} from 'api/ajax';
 import appComponentManage from 'api/appComponentManager'
 import NavBar from '../../components/navbar/index'
 import Icon from '../../components/icon/index'
-// import List from 'widget/molibox-list/molibox-list'
+ // import List from 'widget/molibox-list/molibox-list'
 
 import "./index.css"
 
@@ -20,7 +20,8 @@ class WorkSpace extends Component {
             data:[],
             changeData:{},
             data_params:{},
-            headerData:{}
+            headerData:{},
+            language:'中文'
         }
         this.initThemes();
     }
@@ -66,14 +67,15 @@ class WorkSpace extends Component {
 
     init = () => {
         if ($summer.os == 'pc') {
-            // this.getData();
+            //  this.getData();
             this.getHeaderData();
         } else {
             summer.on("ready", this.getData);
         }
     }
 
-    /*getData = () => {
+    /*getData = (val) => {
+      let lan = val ? val : 'CN';
       let _this = this;
       // 这里应该是上一个页面传过来的
       ajax({
@@ -83,7 +85,7 @@ class WorkSpace extends Component {
           "param":{
                "componentCode":"demo",
                "viewCode":"demo",
-               "lang":"CN"
+               "lang":lan
           },
       },function(data){
           if(data.metas){
@@ -153,6 +155,21 @@ class WorkSpace extends Component {
         link.setAttribute("href", news);
         localStorage.setItem("selThemes",news);
     }
+    /*changeLan = (ev) => {
+      let value = ev.target.value;
+      let val;
+      if (value == "中文") {
+         val = "CN";
+      } else if (value == "English") {
+         val = "US"
+      } else if (value == "Japanese") {
+         val = "JP"
+      }
+      this.getData(val);
+      this.setState({
+        language: value
+      });
+    }*/
     render() {
         let _this = this;
         let headerData=this.state.headerData;
@@ -171,11 +188,24 @@ class WorkSpace extends Component {
         return (
             <div className="um-win">
                 <div className="um-header um-theme-color2">
-                    <NavBar rightContent={<div onClick={this.switchThemes} >{locale.modifyTheme}</div>}>{title} </NavBar>
+                    <NavBar
+                       rightContent={<div onClick={this.switchThemes} >{locale.modifyTheme}</div>}
+                       leftContent = {
+                          <select
+                             className = "um-lang"
+                             value = {this.state.language}
+                             onChange = {this.changeLan}
+                          >
+                             <option value ="中文">中文</option>
+                             <option value ="English">English</option>
+                             <option value ="Japanese">Japanese</option>
+                          </select>
+                       }
+                    >{title} </NavBar>
                 </div>
                 <div className="um-content">
                     {locale.welcomeTongue}
-
+                    
                 </div>
                 <div className="um-footer">
 
