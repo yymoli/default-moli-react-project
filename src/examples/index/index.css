@@ -3,3 +3,13 @@ body,.um-win{
     background: #f4f4f4;
 }
 */
+.um-box.um-line{
+    cursor:pointer;
+}
+.am-list-item img {
+   height: 40px;
+   width: 40px;
+}
+.u-table tr.tr-row-hover, .u-table tr:hover{
+    cursor:pointer;
+}

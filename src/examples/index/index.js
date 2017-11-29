@@ -16,7 +16,6 @@ class WorkSpace extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            allData: {},
             metaData: {},
             data:[],
             changeData:{},
@@ -67,70 +66,14 @@ class WorkSpace extends Component {
 
     init = () => {
         if ($summer.os == 'pc') {
-            this.getData();
+            // this.getData();
             this.getHeaderData();
-            this.getListData();
         } else {
             summer.on("ready", this.getData);
         }
     }
 
-    getData = () => {
-        let _this = this;
-        // 这里应该是上一个页面传过来的
-        let id = this.state.data_params && this.state.data_params.id ? this.state.data_params.id : 4;
-        ajax({
-            "type": "get",
-            //"url": "/user/find",
-            "url": "/userlink/getContactsDetails",
-            "param":{
-                "meta": JSON.stringify({
-                    "clientType": $summer.os,
-                    "componentId":"card001"
-                }),
-                "id":id
-            },
-        },function(data){
-            if(data.flag == 0){
-                let allData = data.data;
-                _this.setState({
-                    allData: allData
-                });
-
-                let metaData = data.metaData;
-                _this.setState({
-                    metaData: metaData
-                });
-            }
-
-        },function(res){
-            console.log(res);
-        });
-    }
-    getHeaderData = () => {
-        let _this = this;
-        // 这里应该是上一个页面传过来的
-        ajax({
-            "type": "get",
-            //"url": "/user/find",
-            "url": "/userlink/header",
-            "param":{
-                "meta": JSON.stringify({
-                    "clientType": $summer.os,
-                    "componentId":"card001"
-                }),
-            },
-        },function(data){
-            _this.setState({
-                headerData: data
-            });
-
-        },function(res){
-            console.log(res);
-        });
-    }
-
-    /*getListData = () => {
+    /*getData = () => {
       let _this = this;
       // 这里应该是上一个页面传过来的
       ajax({
@@ -153,7 +96,29 @@ class WorkSpace extends Component {
       },function(res){
           console.log(res);
       });
-    };*/
+    }*/
+    getHeaderData = () => {
+        let _this = this;
+        // 这里应该是上一个页面传过来的
+        ajax({
+            "type": "get",
+            //"url": "/user/find",
+            "url": "/userlink/header",
+            "param":{
+                "meta": JSON.stringify({
+                    "clientType": $summer.os,
+                    "componentId":"card001"
+                }),
+            },
+        },function(data){
+            _this.setState({
+                headerData: data
+            });
+
+        },function(res){
+            console.log(res);
+        });
+    }
 
     closeFn =() => {
         appComponentManager.closeComponent({
@@ -210,7 +175,7 @@ class WorkSpace extends Component {
                 </div>
                 <div className="um-content">
                     {locale.welcomeTongue}
-                    
+
                 </div>
                 <div className="um-footer">
 
