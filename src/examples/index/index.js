@@ -1,9 +1,8 @@
 import React,{ Component} from 'react';
-import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom';
 import {ajax} from 'api/ajax';
 
-import appComponentManage from 'api/appComponentManager'
+import appComponentManager from 'api/appComponentManager'
 import NavBar from '../../components/navbar/index'
 import Icon from '../../components/icon/index'
  // import List from 'widget/molibox-list/molibox-list'
@@ -12,37 +11,39 @@ import "./index.css"
 
 var locale = require("../i18n/language.json");
 
-class WorkSpace extends Component {
+class Examples extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             metaData: {},
             data:[],
             changeData:{},
-            data_params:{},
+            dataParams:{},
             headerData:{},
             language:'中文'
         }
         this.initThemes();
     }
+
     /**
-     *
+     * 执行一次，在初始化render之前执行
      */
     componentWillMount(){
-        //debugger;
-        if(window.data_params){
-            var data_param = $summer.strToJson(window.data_params);
+        if(window.dataParams){
+            var dataParams = $summer.strToJson(window.dataParams);
             this.setState({
-                data_params: data_param
+                dataParams: dataParams
             })
         }
-
     }
 
     componentDidMount() {
         this.init();
     }
 
+    /**
+     * 初始化主题
+     */
     initThemes(){
         let defaultThemeesPath = "../static/themes/default/css/iuapmobile.um.css";
         let selThemesPath = localStorage.getItem("selThemes");
@@ -144,7 +145,6 @@ class WorkSpace extends Component {
         let href = link.getAttribute("href");
         if(href && href.indexOf('static/themes/')){
 
-
         }
 
         let curT = href.split('static/themes/')[1].split('/')[0];
@@ -191,11 +191,7 @@ class WorkSpace extends Component {
                     <NavBar
                        rightContent={<div onClick={this.switchThemes} >{locale.modifyTheme}</div>}
                        leftContent = {
-                          <select
-                             className = "um-lang"
-                             value = {this.state.language}
-                             onChange = {this.changeLan}
-                          >
+                          <select className = "um-lang" value = {this.state.language} onChange = {this.changeLan}>
                              <option value ="中文">中文</option>
                              <option value ="English">English</option>
                              <option value ="Japanese">Japanese</option>
@@ -205,7 +201,7 @@ class WorkSpace extends Component {
                 </div>
                 <div className="um-content">
                     {locale.welcomeTongue}
-                    
+
                 </div>
                 <div className="um-footer">
 
@@ -215,4 +211,4 @@ class WorkSpace extends Component {
     }
 }
 
-ReactDOM.render(<WorkSpace/>, document.querySelector("#app"))
+ReactDOM.render(<Examples/>, document.querySelector("#app"))
