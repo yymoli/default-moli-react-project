@@ -1,0 +1,9 @@
+@import '~antd/dist/antd.css';
+.ant-input-group-wrapper,.ant-input-group-wrapper .ant-input{
+   width: 200px;
+   height: 30px;
+   margin: 20px;
+}
+.ant-input-group-wrapper .ant-input{
+   margin: 0;
+}
