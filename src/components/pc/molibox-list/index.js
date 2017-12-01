@@ -1,21 +1,12 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import Table from 'bee-table';
-import "bee-table/build/Table.css"
+import { Table, Icon } from 'antd';
+import "./index.css";
+
 class ContentList extends Component {
     render() {
-        let {data, metaData, columnData=[]} = this.props;
-        for(let k in data[0]){
-           if (k !== "avatar") {
-             columnData.push({
-                "title":"",
-                "key":k,
-                "dataIndex":k,
-                "render":null
-             })
-           }
-        }
+        let {data, metaData, columnData} = this.props;
         columnData.map((e,i) => {
            if(metaData[columnData[i].dataIndex]){
                metaData[columnData[i].dataIndex].name ?
@@ -37,7 +28,7 @@ class ContentList extends Component {
             <div className="list um-content">
                 <Table
                     columns={columnData}
-                    data={data}
+                    dataSource={data}
                 />
             </div>
         );

@@ -4,21 +4,32 @@ import PropTypes from 'prop-types';
 import {Router, Route, IndexRoute, hashHistory, Link} from 'react-router';
 import {List} from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
+import './index.css';
+
 const Item = List.Item;
 const Brief = Item.Brief;
 
 class ContentList extends Component {
    render() {
-      let {data, metaData, dataArr=[]} = this.props;
+      let {data, columnData, dataArr=[]} = this.props;
+      let metaData = {
+         "arrow":"horizontal",
+         "multipleLine":true,
+         "activeStyle":{'background':'yellow'},
+         "extra":"extra content",
+         "align":"middle",
+         "onClick":() => {alert(1)},
+         "error":true,
+         "wrap":false,
+         "platform":"cross"
+      };
       data.map((e,i) => {
          return dataArr.push(
             <Item
-               arrow="horizontal"
-               thumb={e.avatar}
-               multipleLine
-               onClick={() => {}}
+               thumb={e.avatar ? e.avatar : "https://hongbao-cdn.yonyoucloud.com//uculture/app/user-avator/account.png" }
+               {...metaData}
             >
-               {e.name} <Brief>{e.departmentName}</Brief>
+               {e[columnData[0].key]} <Brief>{e[columnData[1].key]}</Brief>
             </Item>
          );
       });
