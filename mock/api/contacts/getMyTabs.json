@@ -1,0 +1,31 @@
+{
+   "views": {
+      "User": {
+         "records": [
+            {
+               "title":"Tab 1",
+               "content":"Content of Tab Pane 1"
+            },
+            {
+               "title":"Tab 2",
+               "content":"Content of Tab Pane 2",
+               "disabled":true
+            },
+            {
+               "title":"Tab 3",
+               "content":"Content of Tab Pane 3"
+            }
+         ]
+      }
+   },
+   "metas": {
+      "demo": {
+         "properties": {
+            "defaultActiveKey":"2",
+            "onChange":"() => {console.log(1)}"
+         }
+      }
+   },
+   "flag": 0,
+   "pageNum": 1
+}
