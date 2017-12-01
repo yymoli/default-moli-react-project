@@ -34,28 +34,31 @@ class Inputs extends Component {
             obj[k] = params[k];
          } else {
             defaultValue = params[k][0];
-            if (k == "addonBefore") {
-               params[k].map((e,i) => {
-                  return arrBefore.push(
-                     <Option value={e}>{e}</Option>
+            switch (k) {
+               case "addonBefore":
+                  params[k].map((e,i) => {
+                     return arrBefore.push(
+                        <Option value={e}>{e}</Option>
+                     );
+                  });
+                  selectBefore = (
+                     <Select defaultValue={defaultValue}>
+                        {arrBefore}
+                     </Select>
                   );
-               });
-               selectBefore = (
-                  <Select defaultValue={defaultValue}>
-                     {arrBefore}
-                  </Select>
-               );
-            } else {
-               params[k].map((e,i) => {
-                  return arrAfter.push(
-                     <Option value={e}>{e}</Option>
+               break;
+               case "addonAfter":
+                  params[k].map((e,i) => {
+                     return arrAfter.push(
+                        <Option value={e}>{e}</Option>
+                     );
+                  });
+                  selectAfter = (
+                     <Select defaultValue={defaultValue}>
+                        {arrAfter}
+                     </Select>
                   );
-               });
-               selectAfter = (
-                  <Select defaultValue={defaultValue}>
-                     {arrAfter}
-                  </Select>
-               );
+               break;
             }
          }
       }
