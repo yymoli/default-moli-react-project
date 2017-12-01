@@ -7,13 +7,13 @@
     display: none;  
 }
 .lebra-switch input[type="checkbox"]:checked ~ .lebra-track {
-    border-color: @primary;
-    background-color: @primary;
-    .lebra-handle {
-        -webkit-transform: translate3d(21px, 0, 0);
-        transform: translate3d(21px, 0, 0);
-        background-color: #fff;
-    }
+    border-color: red;
+    background-color: red;
+}
+.lebra-handle {
+    -webkit-transform: translate3d(21px, 0, 0);
+    transform: translate3d(21px, 0, 0);
+    background-color: #fff;
 }
 .lebra-switch input[type="checkbox"]:disabled~ .lebra-track{
     opacity: .3;
