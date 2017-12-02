@@ -5,7 +5,8 @@ import {ajax} from 'api/ajax';
 import appComponentManager from 'api/appComponentManager'
 import NavBar from '../../components/navbar/index'
 import Icon from '../../components/icon/index'
- // import List from 'widget/molibox-list/molibox-list'
+// import List from 'widget/molibox-list/molibox-list'
+import WgtPanel from '../components/wgtPanel/index';
 
 import "./index.css"
 
@@ -201,7 +202,7 @@ class Examples extends Component {
                 </div>
                 <div className="um-content">
                     {locale.welcomeTongue}
-
+                    <WgtPanel data={this.state.allData} metaData={this.state.metaData} changeFn = {this.changeFn}/>
                 </div>
                 <div className="um-footer">
 
