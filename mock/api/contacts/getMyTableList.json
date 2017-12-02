@@ -85,17 +85,17 @@
             "departmentName": {
                "name": "部门名字",
                "display": "block",
-               "style": "{'color': '#bcbcbc', 'font-size': '18px'}"
+               "style": "{'color': '#bcbcbc'}"
             },
             "phone": {
                "name": "电话",
                "display": "block",
-               "style": "{'color': 'green'}"
+               "style": "{'color': 'skyblue'}"
             },
             "email": {
                "name": "邮箱",
                "display": "block",
-               "style": "{'color':'green','border':'1px solid red'}"
+               "style": "{'color':'skyblue'}"
             },
             "age": {
                "name": "年龄",
