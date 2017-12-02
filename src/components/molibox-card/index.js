@@ -1,7 +1,7 @@
 import React,{ Component} from 'react';
 import ReactDOM from 'react-dom';
 import {ajax} from 'api/ajax.js';
-import { Row, Col } from '../layout/index';
+import { Row, Col } from '../molibox-layout/index';
 import './index.css'
 
 const defaultProps = {

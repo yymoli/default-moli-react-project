@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {ajax} from 'api/ajax';
 
 import appComponentManager from 'api/appComponentManager'
-import NavBar from '../../components/navbar/index'
-import Icon from '../../components/icon/index'
+import NavBar from '../../components/molibox-navbar/index'
+import Icon from '../../components/molibox-icon/index'
 // import List from 'widget/molibox-list/molibox-list'
 import WgtPanel from '../components/wgtPanel/index';
 
