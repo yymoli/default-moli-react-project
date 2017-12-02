@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "antd-mobile": "^2.0.3",
+    "antd": "2.13.10",
     "axios": "^0.16.2",
     "bee-table": "^1.0.5",
     "classnames": "^2.2.5",
