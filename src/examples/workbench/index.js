@@ -10,7 +10,7 @@ import WgtPanel from '../wgtPanel/index';
 
 import "./index.css"
 
-var locale = require("./i18n/language.json");
+var locale = require("../i18n/language.json");
 
 class Examples extends Component {
     constructor(props, context) {
