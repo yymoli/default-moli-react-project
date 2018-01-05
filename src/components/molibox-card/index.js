@@ -7,17 +7,14 @@ import './index.css'
 const defaultProps = {
     metaData: {},
     data: {},
-    changeFn(){
-    },
+    changeFn(){},
 };
 
 class Card extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            defaultData: {},
-            allData: {},
-            metaData: {}
+
         }
     }
 
@@ -28,7 +25,7 @@ class Card extends Component {
     }
 
     processMetaData = (key, val) => {
-        const {data,metaData} = this.props;
+        const {metaData} = this.props;
         if (metaData.card && metaData.card.properties && metaData.card.properties[key] && metaData.card.properties[key][val]) {
             return metaData.card.properties[key][val];
         } else {
@@ -39,7 +36,7 @@ class Card extends Component {
     renderCard = () => {
         let _this = this;
         let list = [];
-        const {data,metaData} = this.props;
+        const {data} = this.props;
         for (let item in data) {
             list.push(
                 <Col lg={4} md={4} sm={6} xs={12}>
@@ -65,7 +62,6 @@ class Card extends Component {
     }
 
     render() {
-        const {data,metaData} = this.props;
         return (
             <div className="mt20">
                 <Row>

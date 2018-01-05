@@ -56,7 +56,7 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "scripts": {
-     "dev-pc": "moli dev",
+    "dev-pc": "moli dev",
     "dev-mob": "moli dev -m",
     "dev": "moli dev",
     "build": "moli build",
@@ -67,9 +67,9 @@
     "url": "git@git.yonyou.com:uculture/uculture-h5.git"
   },
   "keywords": [
-    "uculture",
+    "moli",
     "fe"
   ],
-  "author": "GuoYongfeng",
+  "author": "iuap",
   "license": "ISC"
 }
